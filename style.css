@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 /* :root {
@@ -52,9 +53,18 @@ textarea {
 
 header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     margin-bottom: 2rem;
+}
+
+@media (min-width: 650px) {
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
 }
 
 header div {
@@ -82,11 +92,17 @@ label[for="base-color-input"] {
     background: var(--brand-color);
     color: var(--text-color);
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 0.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.2s ease;
+}
+
+@media (min-width: 650px) {
+    .add-note-btn {
+        padding: 0.75rem 1.5rem;
+    }
 }
 
 .add-note-btn:hover {
@@ -146,6 +162,13 @@ label[for="base-color-input"] {
     white-space: pre-wrap;
 }
 
+.note-dates {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+    line-height: 1.4;
+}
+
 .note-actions {
     position: absolute;
     top: 1rem;
@@ -160,6 +183,13 @@ label[for="base-color-input"] {
 .note-card:hover .note-actions {
     opacity: 1;
     visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .note-actions {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
 }
 
 .edit-btn,
