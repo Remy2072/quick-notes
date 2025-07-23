@@ -166,7 +166,7 @@ label[for="base-color-input"] {
     margin-top: 1rem;
     font-size: 0.8rem;
     color: var(--secondary-text-color);
-    line-height: 1.4;
+    line-height: 1.8;
 }
 
 .note-actions {
