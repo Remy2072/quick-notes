@@ -180,6 +180,11 @@ label[for="base-color-input"] {
     line-height: 1.8;
 }
 
+.note-time {
+    font-weight: 400;
+    font-size: 0.7rem;
+}
+
 .note-actions {
     position: absolute;
     top: 1rem;

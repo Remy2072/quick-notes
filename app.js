@@ -2,15 +2,27 @@ let notes = [];
 let editingNoteId = null;
 let todoInputs = [];
 
-// Formatteert een ISO-datum naar dd-mm-jj
+// Formatteert een ISO-datum naar dd-mm-jj uu:mm
 function formatDate(isoString) {
     if (!isoString) return "";
-    const options = {
+    const date = new Date(isoString);
+    const optionsDate = {
         day: "2-digit",
         month: "2-digit",
         year: "2-digit",
     };
-    return new Date(isoString).toLocaleDateString("nl-NL", options);
+    const optionsTime = {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+    };
+    return `${date.toLocaleDateString(
+        "nl-NL",
+        optionsDate
+    )} | <span class="note-time">${date.toLocaleTimeString(
+        "nl-NL",
+        optionsTime
+    )}</span>`;
 }
 
 // Haalt notities op uit localStorage
@@ -131,8 +143,8 @@ function renderNotes() {
           }
 
           <div class="note-dates">
-            <small>📅 Aangemaakt: ${formatDate(note.createdAt)}</small><br/>
-            <small>✏️ Laatst bewerkt: ${formatDate(note.updatedAt)}</small>
+            <small>📅 Created: ${formatDate(note.createdAt)}</small><br/>
+            <small>✏️ Last edited: ${formatDate(note.updatedAt)}</small>
           </div>
         <div class="note-actions">
   <button class="edit-btn" onclick="openNoteDialog('${
