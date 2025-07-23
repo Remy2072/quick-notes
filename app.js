@@ -117,7 +117,15 @@ function renderNotes() {
           ${
               doneTodos.length
                   ? `<div class="note-content"><strong>Done</strong><ul>${doneTodos
-                        .map((t) => `<li><s>${t.text}</s></li>`)
+                        .map((t) => {
+                            const trueIndex = note.todos.findIndex(
+                                (x) => x.text === t.text && x.done
+                            );
+                            return `<li class="todo-done-item">
+      <input type="checkbox" checked onchange="toggleTodo('${note.id}', ${trueIndex})">
+      <s>${t.text}</s>
+    </li>`;
+                        })
                         .join("")}</ul></div>`
                   : ""
           }
@@ -197,7 +205,8 @@ function addTodoInput(value = "") {
 function toggleTodo(noteId, index) {
     const note = notes.find((n) => n.id === noteId);
     if (!note || !note.todos || !note.todos[index]) return;
-    note.todos[index].done = true;
+
+    note.todos[index].done = !note.todos[index].done; // ✅ toggle i.p.v. altijd op true zetten
     note.updatedAt = new Date().toISOString();
     saveNotes();
     renderNotes();

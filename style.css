@@ -162,6 +162,17 @@ label[for="base-color-input"] {
     white-space: pre-wrap;
 }
 
+.todo-done-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.todo-done-item s {
+    margin: 0;
+}
+
 .note-dates {
     margin-top: 1rem;
     font-size: 0.8rem;
